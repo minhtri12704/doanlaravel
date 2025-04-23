@@ -11,9 +11,21 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f5f5f5;
+      background-color: #1c1c1e;
     }
-
+    .navbar {
+      background-color: #2c2c2e;
+    }
+    .navbar-brand {
+      color: #ffb6c1;
+      font-weight: bold;
+    }
+    .navbar-nav .nav-link {
+      color: #f8e8f9 ;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ffd6ec ;
+    }
     header {
       background-color: #333;
       color: white;
@@ -104,22 +116,24 @@
 </nav>
   <header>
     <h1>Blog Tin Tức</h1>
-    <p>Cập nhật những tin mới nhất mỗi ngày!</p>
+    <p>Cập nhật những sản phẩm mới nhất mỗi ngày!</p>
   </header>
 
   <div class="container">
     @foreach($baiviet as $bv)
-      <div class="post">
-        <img src="{{ $bv->hinhanh ?? 'https://via.placeholder.com/800x400' }}" alt="Ảnh tin tức" >
-        <h2>{{ $bv->tieude }}</h2>
+    <div class="d-flex bg-white mb-3">  
+    <div class="p-2 "> <img width="100px" src="{{ $bv->hinhanh ?? 'https://via.placeholder.com/400x400' }}" alt="Ảnh tin tức" ></div>
+    
+    <div class="p-2 "><h2>{{ $bv->tieude }}</h2>
         <p>{{ \Illuminate\Support\Str::limit($bv->noidung, 150) }}</p>
-        <a href="{{ route('baiviet.show', $bv->id) }}">Đọc thêm</a>
-      </div>
+        <a href="{{ route('baiviet.show', $bv->id) }}">Đọc thêm</a></div>
+  </div>
+     
     @endforeach
   </div>
 
   <footer>
-    &copy; 2025 Blog Tin Tức. All rights reserved.
+   Thông tin liên hệ  || Về công ty   || Nhà tài trợ
   </footer>
 <!-- javas -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

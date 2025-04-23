@@ -16,5 +16,6 @@ class BaiVietControllers extends Controller {
             $baiviet = BaiViet::all(); // hoặc paginate, hoặc lấy theo danh mục,...
             return view('Blogtintuc', compact('baiviet'));
         }   
+        
 }
 

@@ -67,6 +67,14 @@
         <input class="form-control me-2" type="text" placeholder="Search">
         <button class="btn btn-primary" type="button">Search</button>
       </form>
+      <ul class="navbar-nav ms-3">
+      
+      <li class="nav-item">
+        <a class="nav-link text-danger" href="/logout">
+          <i class="fas fa-sign-out-alt"></i> Đăng xuất
+        </a>
+      </li>
+    </ul>
     </div>
   </div>
 </nav>
@@ -79,4 +87,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
