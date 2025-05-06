@@ -51,7 +51,7 @@ Route::put('/categories/{id}', [CategoryCrudController::class, 'update'])->name(
 //Route::get('/blog/{id}', [BaiVietController::class, 'show'])->name('baiviet.show');
 
 
->>>>>>> Crud_Category
+
 Route::get('/', function () {
     return view('welcome');
 });

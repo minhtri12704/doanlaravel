@@ -34,8 +34,8 @@
   <tbody>
     @foreach($categories as $category)
       <tr>
-        <td style="padding: 12px;">{{ $category->id }}</td>
-        <td style="padding: 12px;">{{ $category->name }}</td>
+        <td style="padding: 12px; color: #ffb6c1;">{{ $category->id }}</td>
+        <td style="padding: 12px; color: #ffb6c1;">{{ $category->name }}</td>
         <td style="padding: 12px;">
 <!--Sửa-->
           <form action="{{ route('categories.editCategory', $category->id) }}" method="GET" style="display:inline-block;">

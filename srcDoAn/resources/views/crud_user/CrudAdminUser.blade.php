@@ -128,8 +128,22 @@
             </th>
 
             <th>
-                <a href="{{ route('user.edit', ['id' => $user->id]) }}">Edit</a> |
-                <a href="{{ route('user.delete', ['id' => $user->id]) }}">Delete</a>
+                <!-- Nút Sửa -->
+                <form action="{{ route('user.edit', ['id' => $user->id]) }}" method="GET" style="display: inline-block;">
+                    <button type="submit" class="edit" style="background-color: #ffa6c9; padding: 6px 12px; border: none; border-radius: 8px; color: white;">
+                        Sửa
+                    </button>
+                </form>
+
+                <!-- Nút Xóa -->
+                <form action="{{ route('user.delete', ['id' => $user->id]) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Bạn có chắc chắn muốn xoá?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="delete" style="background-color: #ff4d6d; padding: 6px 12px; border: none; border-radius: 8px; color: white;">
+                        Xoá
+                    </button>
+                </form>
+
             </th>
         </tr>
         @endforeach

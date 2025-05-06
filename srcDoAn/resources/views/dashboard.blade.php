@@ -49,7 +49,7 @@
             <li class="nav-item"><a href="#" class="nav-link">Quản lý khách hàng</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Quản lý sản phẩm</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Quản lý đơn hàng</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Quản lý danh mục</a></li>
+            <li class="nav-item"><a href="{{ route('categories.index') }}" class="nav-link">Quản lý danh mục</a></li>
         </ul>
     </div>
     <div class="content flex-grow-1">
