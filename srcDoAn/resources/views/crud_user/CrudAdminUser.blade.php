@@ -75,17 +75,13 @@
 
     .pagination .page-item.active .page-link {
         background-color: #ff69b4;
-        /* Trang hiện tại */
         color: #ffffff;
-        /* Chữ trắng */
         border: 1px solid #d3d3d3;
     }
 
     .pagination .page-link:hover {
         background-color: #ff85c0;
-        /* Hover phân trang */
         color: #ffffff;
-        /* Chữ trắng */
     }
 </style>
 

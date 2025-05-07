@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
+use App\Models\DanhMuc;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
-        Paginator::useBootstrapFive(); // <- Bắt Laravel dùng Bootstrap 5
+        Paginator::useBootstrapFive();
+
+        View::composer('*', function ($view) {
+            $view->with('categories', Category::all());
+        });
     }
 }
