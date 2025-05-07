@@ -6,6 +6,7 @@ use App\Http\Controllers\BaiVietController;
 use App\Models\Category;
 use App\Http\Controllers\CrudUserController;
 use App\Http\Controllers\CrudProductController;
+use App\Http\Controllers\ProductListController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,9 @@ Route::delete('/categories/{id}', [CategoryCrudController::class, 'deleteCategor
 Route::get('/categories/create', [CategoryCrudController::class, 'create'])->name('categories.create');
 Route::post('/categories', [CategoryCrudController::class, 'store'])->name('categories.store');
 Route::put('/categories/{id}', [CategoryCrudController::class, 'update'])->name('categories.update');
+
+//Danh sách sản phẩm
+Route::get('/sanpham', [ProductListController::class, 'index'])->name('sanpham.index');
 
 //route tintuc
 //Route::get('/blog', [BaiVietController::class, 'index'])->name('baiviet.index');

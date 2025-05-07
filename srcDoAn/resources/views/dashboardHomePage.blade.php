@@ -9,7 +9,7 @@
 
     <style>
         body {
-            background-color: #007bff;
+            background-color: #007bff; /* hoặc màu nhẹ hơn như #f5f5f5 */
             /* Nền xanh */
             color: #f5f5f5;
         }
@@ -98,11 +98,12 @@
                 <div class="col-md-4 mb-3 text-md-end">
                     <h5>Thương hiệu hợp tác</h5>
                     <div class="d-flex flex-wrap justify-content-md-end justify-content-center gap-2">
-                        <img src="{{ asset('storage/images/DienMayXanh.png') }}" alt="Điện máy Xanh" style="height: 40px;width:100px;">
-                        <img src="{{ asset('storage/images/thegioididong.png') }}" alt="Thế Giới Di Động" style="height: 40px;width:100px;">
-                        <img src="{{ asset('storage/images/panasonic.png') }}" alt="Panasonic" style="height: 40px;width:100px;">
-                        <img src="{{ asset('storage/images/lg.png') }}" alt="LG" style="height: 40px;width:100px;">
-                        <img src="{{ asset('storage/images/samsung.png') }}" alt="Samsung" style="height: 40px;width:100px;">
+                    <img src="{{ asset('images/DienMayXanh.jpg') }}" alt="Điện máy Xanh" style="height: 40px;width:100px;">
+                    <img src="{{ asset('images/TheGioiDiDong.jpg') }}" alt="Thế Giới Di Động" style="height: 40px;width:100px;">
+                    <img src="{{ asset('images/Panasonic.jpg') }}" alt="Panasonic" style="height: 40px;width:100px;">
+                    <img src="{{ asset('images/LG.jpg') }}" alt="LG" style="height: 40px;width:100px;">
+                    <img src="{{ asset('images/SamSung.jpg') }}" alt="Samsung" style="height: 40px;width:100px;">   
+                       
 
                     </div>
                 </div>
