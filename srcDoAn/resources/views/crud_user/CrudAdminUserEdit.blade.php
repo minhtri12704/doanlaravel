@@ -3,71 +3,71 @@
 @section('content')
 <style>
     .form-container {
-        max-width: 400px; /* Thu nhỏ form */
-        margin: 0 auto; /* Căn giữa form */
+        max-width: 400px;
+        margin: 0 auto;
         padding: 20px;
-        background-color: #1a1a1a; /* Nền tối cho form */
-        border-radius: 8px; /* Bo góc cho form */
+        background-color: #1a1a1a;
+        border-radius: 8px;
     }
 
     h2 {
-        color: #ffccdd; /* Tiêu đề hồng pastel */
-        text-align: center; /* Căn giữa tiêu đề */
-        margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+        color: #ffccdd;
+        text-align: center;
+        margin-bottom: 20px;
     }
 
     label {
-        color: #ffccdd; /* Màu chữ label hồng pastel */
+        color: #ffccdd;
     }
 
     .form-control {
-        background-color: #2c2c2c; /* Nền input xám đậm */
-        color: #ffccdd; /* Chữ hồng pastel */
-        border: 1px solid #d3d3d3; /* Viền xám nhạt */
-        border-radius: 4px; /* Bo góc cho input */
-        padding: 10px; /* Padding cho input */
-        margin-bottom: 15px; /* Khoảng cách giữa các input */
+        background-color: #2c2c2c;
+        color: #ffccdd;
+        border: 1px solid #d3d3d3;
+        border-radius: 4px;
+        padding: 10px;
+        margin-bottom: 15px;
     }
 
     .form-control:focus {
-        background-color: #3a3a3a; /* Nền khi focus */
+        background-color: #3a3a3a;
         color: #ffccdd;
-        border-color: #ff69b4; /* Viền hồng đậm khi focus */
-        box-shadow: none; /* Bỏ bóng mặc định */
+        border-color: #ff69b4;
+        box-shadow: none;
     }
 
     .btn-dark {
-        background-color: #ff69b4; /* Nền nút hồng đậm */
-        color: #ffffff; /* Chữ trắng */
+        background-color: #ff69b4;
+        color: #ffffff;
         border: none;
-        padding: 12px 24px; /* Phóng to nút */
-        font-size: 1.2rem; /* Chữ to hơn */
-        border-radius: 4px; /* Bo góc cho nút */
-        width: 100%; /* Chiếm hết chiều rộng */
-        cursor: pointer; /* Con trỏ khi hover */
+        padding: 12px 24px;
+        font-size: 1.2rem;
+        border-radius: 4px;
+        width: 100%;
+        cursor: pointer;
     }
 
     .btn-dark:hover {
-        background-color: #ff85c0; /* Hover sáng hơn */
+        background-color: #ff85c0;
     }
 
     .btn-reset {
-        background-color: #ffd700; /* Nền nút làm mới vàng nhạt */
-        color: #000000; /* Chữ đen */
+        background-color: #ffd700;
+        color: #000000;
         border: none;
-        padding: 12px 24px; /* Kích thước tương tự nút Lưu */
+        padding: 12px 24px;
         font-size: 1.2rem;
-        border-radius: 4px; /* Bo góc cho nút */
-        width: 100%; /* Chiếm hết chiều rộng */
-        margin-top: 10px; /* Khoảng cách trên nút Reset */
+        border-radius: 4px;
+        width: 100%;
+        margin-top: 10px;
     }
 
     .btn-reset:hover {
-        background-color: #ffec3d; /* Hover sáng hơn */
+        background-color: #ffec3d;
     }
 
     .form-container .mb-3:last-child {
-        margin-bottom: 0; /* Bỏ khoảng cách dưới cho phần tử cuối cùng */
+        margin-bottom: 0;
     }
 </style>
 <div class="form-container">

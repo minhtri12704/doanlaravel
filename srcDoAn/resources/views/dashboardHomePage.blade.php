@@ -9,14 +9,12 @@
 
     <style>
         body {
-            background-color: #007bff; /* hoặc màu nhẹ hơn như #f5f5f5 */
-            /* Nền xanh */
+            background-color: #007bff;
             color: #f5f5f5;
         }
 
         .navbar {
             background-color: #007bff;
-            /* Xanh nước biển */
         }
 
         .navbar .nav-link,
@@ -40,7 +38,11 @@
 </head>
 
 <body>
-
+    {{-- chạy danh mục, hiển thị toàn bộ danh mục có trong quản lí danh mục --}}
+    @php
+    use App\Models\Category;
+    $categories = Category::all();
+    @endphp
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <span class="navbar-brand fw-bold">Điện máy Xanh</span>
@@ -52,13 +54,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Trang chủ</a>
                     </li>
+                    {{-- khi ấn vào danh mục sẽ hiển thị các sản phẩm theo danh mục đó --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             Danh mục
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {{-- vòng lặp foreach để chạy vòng lặp trên @php...@endphp --}}
                             @foreach($categories as $category)
-                            <li><a class="dropdown-item" href="#">{{ $category->name }}</a></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('products.byCategory', $category->id) }}">
+                                    {{-- hiển thị tên danh mục --}}
+                                    {{ $category->name }}
+                                </a>
+                            </li>
                             @endforeach
                         </ul>
                     </li>
@@ -77,6 +87,7 @@
             </div>
         </div>
     </nav>
+
 
     <div class="content">
         @yield('content')
@@ -98,12 +109,12 @@
                 <div class="col-md-4 mb-3 text-md-end">
                     <h5>Thương hiệu hợp tác</h5>
                     <div class="d-flex flex-wrap justify-content-md-end justify-content-center gap-2">
-                    <img src="{{ asset('images/DienMayXanh.jpg') }}" alt="Điện máy Xanh" style="height: 40px;width:100px;">
-                    <img src="{{ asset('images/TheGioiDiDong.jpg') }}" alt="Thế Giới Di Động" style="height: 40px;width:100px;">
-                    <img src="{{ asset('images/Panasonic.jpg') }}" alt="Panasonic" style="height: 40px;width:100px;">
-                    <img src="{{ asset('images/LG.jpg') }}" alt="LG" style="height: 40px;width:100px;">
-                    <img src="{{ asset('images/SamSung.jpg') }}" alt="Samsung" style="height: 40px;width:100px;">   
-                       
+                        <img src="{{ asset('images/DienMayXanh.jpg') }}" alt="Điện máy Xanh" style="height: 40px;width:100px;">
+                        <img src="{{ asset('images/TheGioiDiDong.jpg') }}" alt="Thế Giới Di Động" style="height: 40px;width:100px;">
+                        <img src="{{ asset('images/Panasonic.jpg') }}" alt="Panasonic" style="height: 40px;width:100px;">
+                        <img src="{{ asset('images/LG.jpg') }}" alt="LG" style="height: 40px;width:100px;">
+                        <img src="{{ asset('images/SamSung.jpg') }}" alt="Samsung" style="height: 40px;width:100px;">
+
 
                     </div>
                 </div>
@@ -113,5 +124,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

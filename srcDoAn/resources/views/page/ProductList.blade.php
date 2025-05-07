@@ -5,22 +5,17 @@
 
 <style>
     body {
-        background-color: #1a1a1a;
-        /* Nền đen nhạt */
-        color: #ffccdd;
-        /* Chữ hồng pastel */
+        background-color:rgb(255, 255, 255);
+        color:rgb(0, 0, 0);
     }
 
     h2 {
-        color: #ffccdd;
-        /* Tiêu đề hồng pastel */
+        color:rgb(0, 0, 0);
     }
 
     .table {
         background-color: #1a1a1a;
-        /* Nền bảng đen */
         color: #ffffff;
-        /* Chữ trong bảng trắng */
     }
 
     .table-bordered th,
@@ -32,45 +27,33 @@
 
     .table-dark {
         background-color: #3a3a3a;
-        /* Nền tiêu đề bảng */
         color: #ffccdd;
-        /* Chữ tiêu đề bảng hồng pastel */
     }
 
     .btn-dark {
         background-color: #ff69b4;
-        /* Nền nút hồng đậm */
         color: #ffffff;
-        /* Chữ nút trắng */
         border: none;
     }
 
     .btn-dark:hover {
         background-color: #ff85c0;
-        /* Hover sáng hơn */
     }
 
     .action-icon {
         color: #ffccdd;
-        /* Màu icon hồng pastel */
         font-size: 1.2rem;
-        /* Kích thước icon */
         margin-right: 10px;
-        /* Khoảng cách giữa các icon */
     }
 
     .action-icon:hover {
         color: #ff85c0;
-        /* Hover sáng hơn */
     }
 
     .pagination .page-link {
-        background-color: #2c2c2c;
-        /* Nền phân trang */
-        color: #ffccdd;
-        /* Chữ phân trang hồng pastel */
+        background-color:rgb(255, 255, 255);
+        color:rgb(0, 0, 0);
         border: 1px solid #d3d3d3;
-        /* Viền xám nhạt */
     }
 
     .pagination .page-item.active .page-link {
@@ -85,18 +68,18 @@
     }
 </style>
 <div class="container mt-5">
-    <h2 class="text-center mb-4" style="color: white; text-shadow: 1px 1px 3px #000;">Danh sách Sản phẩm</h2>
+    <h2 class="text-center mb-4" style="color: blac; text-shadow: 1px 1px 3px #000;">Danh sách Sản phẩm</h2>
     <div class="row row-cols-1 row-cols-md-4 g-4">
         @forelse($sanPhams as $sp)
         <div class="col">
             <div class="card h-100 shadow-sm">
-                <img src="{{ asset('images/' . $sp->hinh_anh) }}"
-                     alt="{{ $sp->ten_san_pham }}"
+                <img src="{{ asset('images/' . $sp->image) }}"
+                     alt="{{ $sp->name }}"
                      class="card-img-top img-fluid"
                      style="height: 250px;width:350px; object-fit: cover;">
 
                 <div class="card-body">
-                    <h5 class="card-title text-danger" style="min-height: 48px;">{{ $sp->ten_san_pham }}</h5>
+                    <h5 class="card-title text-danger" style="min-height: 48px;">{{ $sp->name }}</h5>
                     <div class="mb-2">
                         @for($i = 1; $i <= 5; $i++)
                             @if($i <= $sp->so_sao)
@@ -109,7 +92,7 @@
 
                     <p class="card-text">
                         <strong class="text-dark">Giá:</strong>
-                        <span class="text-danger">{{ number_format($sp->gia, 0, ',', '.') }}₫</span><br>
+                        <span class="text-danger">{{ number_format($sp->price, 0, ',', '.') }}₫</span><br>
                         <strong class="text-dark">Ngày tạo:</strong> {{ $sp->created_at->format('d/m/Y') }}
                     </p>
 
