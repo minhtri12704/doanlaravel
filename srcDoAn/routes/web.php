@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryCrudController;
 use App\Http\Controllers\BaiVietController;
 use App\Models\Category;
 use App\Http\Controllers\CrudUserController;
+use App\Http\Controllers\CrudProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,8 +52,29 @@ Route::put('/categories/{id}', [CategoryCrudController::class, 'update'])->name(
 //Route::get('/blog/{id}', [BaiVietController::class, 'show'])->name('baiviet.show');
 
 
+// route CrudProduct với prefix
+/*
+prefix có chức năng là mọi đường dẫn trong prefix này sẽ bắt đầu bằng products(tên đặt trong prefix)
+vd như ở dòng 61 chỉ có dấu / chứ không thì bình thường nó sẽ là /products
+*/ 
+Route::get('/products', [CrudProductController::class, 'index'])->name('products.index');
+Route::get('/products/create', [CrudProductController::class, 'create'])->name('products.create');
+Route::post('/products', [CrudProductController::class, 'store'])->name('products.store');
+Route::get('/products/{product}/edit', [CrudProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{product}', [CrudProductController::class, 'update'])->name('products.update');
+Route::delete('/products/{product}', [CrudProductController::class, 'delete'])->name('products.delete');
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
 });
-

@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class UserRoleSeeder extends Seeder
 {
     //  cài số lượng bản ghi tối đa
-    const MAX_RECORDS = 100;
+    const MAX_RECORDS = 50;
     /**
      * Run the database seeds.
      */
