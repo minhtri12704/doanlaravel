@@ -7,6 +7,11 @@ use App\Models\Category;
 use App\Http\Controllers\CrudUserController;
 use App\Http\Controllers\CrudProductController;
 use App\Http\Controllers\ProductListController;
+
+use App\Http\Controllers\UserCrudController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +22,7 @@ use App\Http\Controllers\ProductListController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
 
 //user
@@ -78,6 +84,15 @@ Route::delete('/products/{product}', [CrudProductController::class, 'delete'])->
 
 
 
+
+
+
+//login
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 
