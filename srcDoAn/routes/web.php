@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CrudUserController;
 use App\Http\Controllers\UserCrudController;
-use App\Http\Controllers\OrderController;
-
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
@@ -18,7 +15,6 @@ use App\Http\Controllers\RegisterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/dashboard', [OrderController::class, 'dashboard'])->name('dashboard');
 
 //route do an
 Route::get('/users', [UserCrudController::class, 'index'])->name('users.index');
@@ -27,12 +23,6 @@ Route::post('users', [UserCrudController::class, 'postUser'])->name('users.store
 Route::get('/users/{id}/edit', [UserCrudController::class, 'editUser'])->name('users.editUser');
 Route::delete('/users/{id}/delete', [UserCrudController::class, 'deleteUser'])->name('users.deleteUser');
 Route::put('/users/{id}', [UserCrudController::class, 'updateUser'])->name('users.updateUser');
-
-
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
-Route::post('/orders/{id}', [OrderController::class, 'update'])->name('orders.update');
-Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
 
 
 //login

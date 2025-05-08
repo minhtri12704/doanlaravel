@@ -13,7 +13,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #2e2e2e, #f8cdda);
+      background: linear-gradient(to right,rgb(255, 255, 255),rgb(61, 170, 254));
       height: 100vh;
       display: flex;
       align-items: center;
@@ -21,7 +21,7 @@
     }
 
     .register-container {
-      background-color: #f9f9f9;
+      background-color: rgb(214, 224, 235);
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
@@ -33,6 +33,8 @@
     .register-container h2 {
       color: #2e2e2e;
       margin-bottom: 20px;
+      font-size: 36px;
+      font-weight: bold;
     }
 
     .register-container input {
@@ -44,11 +46,21 @@
       font-size: 16px;
     }
 
+    .register-container input::placeholder {
+      color: #999;
+    }
+
+    .register-container input:focus {
+      outline: none;
+      border-color: #ff69b4;
+      box-shadow: 0 0 5px rgba(255, 105, 180, 0.4);
+    }
+
     .register-container button {
       width: 100%;
       padding: 12px;
       margin-top: 20px;
-      background-color: #ff99aa;
+      background-color: rgb(62, 138, 253);
       color: white;
       font-size: 16px;
       border: none;
@@ -58,7 +70,7 @@
     }
 
     .register-container button:hover {
-      background-color: #e26d89;
+      background-color: rgb(0, 42, 125);
     }
 
     .register-container p {
@@ -67,8 +79,17 @@
       font-size: 14px;
     }
 
+    .register-container a {
+      color: rgb(50, 113, 209);
+      text-decoration: none;
+    }
+
+    .register-container a:hover {
+      text-decoration: underline;
+    }
+
     .error-message {
-      color: red;
+      color: #ff4d6d;
       font-size: 14px;
       text-align: left;
       margin-bottom: 8px;
@@ -110,7 +131,7 @@
     </form>
 
     <p>Đã có tài khoản?
-      <a href="{{ route('login') }}" style="color:#ff99aa;">Đăng nhập</a>
+      <a href="{{ route('login') }}">Đăng nhập</a>
     </p>
   </div>
 

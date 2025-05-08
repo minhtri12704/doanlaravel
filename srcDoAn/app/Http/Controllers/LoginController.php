@@ -14,15 +14,15 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+    $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            
-            return redirect()->intended('/dashboard'); 
-        }
-
-        return back()->with('error', 'Email hoặc mật khẩu không đúng')->withInput();
+    if (Auth::attempt($credentials)) {
+        return redirect('/'); 
     }
+
+    return back()->with('error', 'Email hoặc mật khẩu không đúng')->withInput();
+    }
+
 
     public function logout(Request $request)
     {

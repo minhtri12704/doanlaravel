@@ -13,7 +13,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #2e2e2e, #f8cdda);
+      background: linear-gradient(to right,rgb(255, 255, 255),rgb(61, 170, 254));
       height: 100vh;
       display: flex;
       align-items: center;
@@ -21,7 +21,7 @@
     }
 
     .login-container {
-      background-color: #f9f9f9;
+      background-color: rgb(214, 224, 235);
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
@@ -33,6 +33,8 @@
     .login-container h2 {
       color: #2e2e2e;
       margin-bottom: 20px;
+      font-size: 36px;
+      font-weight: bold;
     }
 
     .login-container input {
@@ -48,7 +50,7 @@
       width: 100%;
       padding: 12px;
       margin-top: 20px;
-      background-color: #ff99aa;
+      background-color: rgb(62, 138, 253);
       color: white;
       font-size: 16px;
       border: none;
@@ -58,7 +60,7 @@
     }
 
     .login-container button:hover {
-      background-color: #e26d89;
+      background-color: rgb(0, 42, 125);
     }
 
     .login-container p {
@@ -94,7 +96,7 @@
     </form>
 
     <p>Chưa có tài khoản? 
-      <a href="{{ route('register') }}" style="color:#ff99aa;">Đăng ký</a>
+      <a href="{{ route('register') }}" style="color:rgb(50, 113, 209);">Đăng ký</a>
     </p>
   </div>
 
