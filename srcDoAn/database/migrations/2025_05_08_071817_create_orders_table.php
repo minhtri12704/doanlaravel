@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('order_name');
-            $table->string('customer_name');
-            $table->integer('quantity');
+            $table->string('ten_don_hang');
+            $table->string('ten_khach_hang');
+            $table->integer('so_luong');
+            $table->double('tong_tien')->nullable();
+            $table->string('phuong_thuc_thanh_toan');
+            $table->string('trang_thai');
+            $table->string('ghi_chu')->nullable();
             $table->timestamps();
         });
     }

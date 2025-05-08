@@ -1,172 +1,211 @@
 @extends('dashboard')
 
-@section('title', 'Quản Lý Đơn Hàng')
+@section('title', 'Danh sách Đơn Hàng')
 
 @section('content')
 <style>
-  .order-page {
-    max-width: 900px;
-    margin: 5% auto;
-    background-color: #2c2c2e;
-    color: #fff0f6;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
-
-  h1, h2 {
-    text-align: center;
+  body {
+    background-color: #1a1a1a;
     color: #ffb6c1;
   }
 
-  table {
+  .order-list {
+    width: 95%;
+    margin: 40px auto;
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+  }
+
+  .header-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff85c0;
+    margin-bottom: 20px;
+  }
+
+  .btn-add {
+    float: right;
+    margin-bottom: 15px;
+    background-color: #ff69b4;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .btn-add:hover {
+    background-color: #ff3399;
+  }
+
+  .custom-table {
     width: 100%;
+    background-color: #2b2b2b;
+    color: #ffb6c1;
     border-collapse: collapse;
-    margin-top: 30px;
-    background-color: #3c3c3f;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
   }
 
-  th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #555;
+  .custom-table th,
+  .custom-table td {
+    border: 1px solid #444;
+    padding: 12px 10px;
+    text-align: center;
+    vertical-align: middle;
   }
 
-  th {
-    background-color: #ffb6c1;
-    color: #2c2c2e;
-  }
-
-  tr:hover {
-    background-color: #4a4a4d;
-  }
-
-  form {
-    background-color: #3c3c3f;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-  }
-
-  input, select {
-    padding: 10px;
-    margin: 10px 0;
-    width: 100%;
-    border: none;
-    border-radius: 6px;
-    background-color: #555;
-    color: #fff0f6;
-    font-size: 16px;
-  }
-
-  button {
-    background-color: #ffb6c1;
-    color: #2c2c2e;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+  .custom-table th {
+    background-color: #3c3c3c;
+    color: #ffb6c1;
     font-weight: bold;
-    transition: background-color 0.3s ease;
   }
 
-  button:hover {
-    background-color: #ff80ab;
+  .custom-table tr:hover {
+    background-color: #383838;
   }
 
-  .actions button {
+  .btn-edit {
+    background-color: #ffd1dc;
+    color: #2c2c2e;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
     margin-right: 5px;
+  }
+
+  .btn-delete {
+    background-color: #ff4d6d;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+
+  .btn-edit:hover,
+  .btn-delete:hover {
+    opacity: 0.9;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .alert {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+  .alert-success {
+    background-color: #28a745;
+    color: #fff;
+  }
+
+  .alert-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+  .status {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  .status-choxuly {
+    background-color: #ffcc00;
+    color: #1a1a1a;
+  }
+
+  .status-dangxuly {
+    background-color: #3399ff;
+    color: #fff;
+  }
+
+  .status-daxuly {
+    background-color: #6c757d;
+    color: #fff;
   }
 </style>
 
-<div class="order-page">
-  <h1>Quản lý Đơn hàng</h1>
+<div class="order-list">
+  <h2 class="header-title">Danh sách Đơn hàng</h2>
 
-  <form id="orderForm">
-    <h2>Thêm / Cập nhật Đơn hàng</h2>
-    <input type="text" id="orderName" placeholder="Tên đơn hàng" required>
-    <input type="text" id="customerName" placeholder="Tên khách hàng" required>
-    <input type="number" id="quantity" placeholder="Số lượng" required>
-    <button type="submit">Lưu</button>
-  </form>
+  <a href="{{ route('orders.create') }}" class="btn-add">+ Thêm đơn hàng</a>
 
-  <table>
+  @if (session('success'))
+    <div class="alert alert-success text-center">{{ session('success') }}</div>
+  @elseif (session('error'))
+    <div class="alert alert-danger text-center">{{ session('error') }}</div>
+  @endif
+
+  <table class="custom-table">
     <thead>
       <tr>
-        <th>ID</th>
+        <th>#</th>
         <th>Tên đơn hàng</th>
         <th>Khách hàng</th>
         <th>Số lượng</th>
+        <th>Tổng tiền</th>
+        <th>Thanh toán</th>
+        <th>Chi tiết</th>
+        <th>Trạng thái</th>
+        <th>Ghi chú</th>
         <th>Hành động</th>
       </tr>
     </thead>
-    <tbody id="orderList">
+    <tbody>
+      @forelse ($orders as $donHang)
+        <tr>
+          <td>{{ $loop->iteration }}</td>
+          <td>{{ $donHang->ten_don_hang }}</td>
+          <td>{{ $donHang->ten_khach_hang }}</td>
+          <td>{{ $donHang->so_luong }}</td>
+          <td><strong>{{ number_format($donHang->tong_tien, 0, ',', '.') }} <span style="color:#ff69b4;">VNĐ</span></strong></td>
+          <td>{{ $donHang->phuong_thuc_thanh_toan }}</td>
+          <td>
+          <a href="{{ route('orders.show', $donHang->id) }}">
+          <button class="btn-edit">Xem</button>
+          </a>
+          </td>
+          <td>
+            @php
+              $statusClass = match($donHang->trang_thai) {
+                  'Chưa xử lý' => 'status status-choxuly',
+                  'Đang xử lý' => 'status status-dangxuly',
+                  'Đã xử lý'   => 'status status-daxuly',
+                  default => 'status'
+              };
+            @endphp
+            <span class="{{ $statusClass }}">{{ $donHang->trang_thai }}</span>
+          </td>
+          <td>{{ $donHang->ghi_chu }}</td>
+          <td>
+            <a href="{{ route('orders.edit', $donHang->id) }}">
+              <button class="btn-edit">Sửa</button>
+            </a>
+            <form action="{{ route('orders.destroy', $donHang->id) }}" method="POST" style="display:inline;">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
+            </form>
+          </td>
+        </tr>
+      @empty
+        <tr>
+          <td colspan="9" class="text-center">Không có đơn hàng nào.</td>
+        </tr>
+      @endforelse
     </tbody>
   </table>
 </div>
-
-<script>
-  let orders = [];
-  let editIndex = -1;
-
-  const form = document.getElementById('orderForm');
-  const orderList = document.getElementById('orderList');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const orderName = document.getElementById('orderName').value;
-    const customerName = document.getElementById('customerName').value;
-    const quantity = document.getElementById('quantity').value;
-
-    const order = { orderName, customerName, quantity };
-
-    if (editIndex === -1) {
-      orders.push(order);
-    } else {
-      orders[editIndex] = order;
-      editIndex = -1;
-    }
-
-    form.reset();
-    renderOrders();
-  });
-
-  function renderOrders() {
-    orderList.innerHTML = '';
-    orders.forEach((order, index) => {
-      const row = document.createElement('tr');
-
-      row.innerHTML = `
-        <td>${index + 1}</td>
-        <td>${order.orderName}</td>
-        <td>${order.customerName}</td>
-        <td>${order.quantity}</td>
-        <td class="actions">
-          <button onclick="editOrder(${index})">Sửa</button>
-          <button onclick="deleteOrder(${index})">Xóa</button>
-        </td>
-      `;
-
-      orderList.appendChild(row);
-    });
-  }
-
-  function editOrder(index) {
-    const order = orders[index];
-    document.getElementById('orderName').value = order.orderName;
-    document.getElementById('customerName').value = order.customerName;
-    document.getElementById('quantity').value = order.quantity;
-    editIndex = index;
-  }
-
-  function deleteOrder(index) {
-    if (confirm("Bạn có chắc muốn xóa đơn hàng này?")) {
-      orders.splice(index, 1);
-      renderOrders();
-    }
-  }
-</script>
 @endsection

@@ -7,45 +7,87 @@ use App\Models\Order;
 
 class OrderController extends Controller
 {
-    //
+    // Hiển thị danh sách đơn hàng
     public function index()
     {
         $orders = Order::all();
         return view('crud_user.crud_Order', compact('orders'));
     }
 
+    // Hiển thị form tạo mới
+    public function create()
+    {
+        return view('crud_user.create_order');
+    }
+
+    // Lưu đơn hàng mới
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'order_name' => 'required',
-            'customer_name' => 'required',
-            'quantity' => 'required|integer',
+            'ten_don_hang' => 'required|string|max:255',
+            'ten_khach_hang' => 'required|string|max:255',
+            'so_luong' => 'required|integer|min:1',
+            'tong_tien' => 'nullable|numeric',
+            'phuong_thuc_thanh_toan' => 'required|string',
+            'trang_thai' => 'required|string',
+            'ghi_chu' => 'nullable|string|max:255',
         ]);
 
         Order::create($validated);
-
-        return redirect()->back();
+        return redirect()->route('orders.index');
     }
 
+    // Hiển thị form chỉnh sửa
+    public function edit($id)
+    {
+        $order = Order::find($id);
+        if (!$order) {
+            return redirect()->route('orders.index')->with('error', 'Không tìm thấy đơn hàng.');
+        }
+        return view('crud_user.edit_order', compact('order'));
+    }
+
+    // Cập nhật đơn hàng
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'order_name' => 'required',
-            'customer_name' => 'required',
-            'quantity' => 'required|integer',
+            'ten_don_hang' => 'required|string|max:255',
+            'ten_khach_hang' => 'required|string|max:255',
+            'so_luong' => 'required|integer|min:1',
+            'tong_tien' => 'nullable|numeric',
+            'phuong_thuc_thanh_toan' => 'required|string',
+            'trang_thai' => 'required|string',
+            'ghi_chu' => 'nullable|string|max:255',
         ]);
 
-        $order = Order::findOrFail($id);
-        $order->update($validated);
+        $order = Order::find($id);
+        if (!$order) {
+            return redirect()->route('orders.index')->with('error', 'Không tìm thấy đơn hàng.');
+        }
 
-        return redirect()->back();
+        $order->update($validated);
+        return redirect()->route('orders.index');
     }
 
+    // Xóa đơn hàng
     public function destroy($id)
     {
-        $order = Order::findOrFail($id);
-        $order->delete();
-
+        $order = Order::find($id);
+        if ($order) {
+            $order->delete();
+        }
         return redirect()->back();
     }
+    
+    public function show($id)
+    {
+        $order = Order::find($id);
+
+        if (!$order) {
+            return redirect()->route('orders.index')->with('error', 'Không tìm thấy đơn hàng.');
+        }
+
+        return view('crud_user.show_order', compact('order'));
+    }
+
 }

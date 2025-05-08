@@ -2,10 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'ten_don_hang',
+        'ten_khach_hang',
+        'so_luong',
+        'tong_tien',
+        'phuong_thuc_thanh_toan',
+        'trang_thai',
+        'ghi_chu',
+    ];
 }
