@@ -11,13 +11,13 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
-        return view('crud_user.crud_Order', compact('orders'));
+        return view('crud_order.crud_Order', compact('orders'));
     }
 
     // Hiển thị form tạo mới
     public function create()
     {
-        return view('crud_user.create_order');
+        return view('crud_order.create_order');
     }
 
     // Lưu đơn hàng mới
@@ -44,7 +44,7 @@ class OrderController extends Controller
         if (!$order) {
             return redirect()->route('orders.index')->with('error', 'Không tìm thấy đơn hàng.');
         }
-        return view('crud_user.edit_order', compact('order'));
+        return view('crud_order.edit_order', compact('order'));
     }
 
     // Cập nhật đơn hàng
@@ -87,7 +87,7 @@ class OrderController extends Controller
             return redirect()->route('orders.index')->with('error', 'Không tìm thấy đơn hàng.');
         }
 
-        return view('crud_user.show_order', compact('order'));
+        return view('crud_order.show_order', compact('order'));
     }
 
 }
