@@ -93,6 +93,12 @@
       <input type="password" name="password" placeholder="Mật khẩu" required>
 
       <button type="submit">Đăng nhập</button>
+      @if (session('success'))
+  <div style="color: green; margin-bottom: 10px;">
+    {{ session('success') }}
+  </div>
+@endif
+
     </form>
 
     <p>Chưa có tài khoản? 

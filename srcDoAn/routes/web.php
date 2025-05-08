@@ -16,13 +16,6 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-//route do an
-Route::get('/users', [UserCrudController::class, 'index'])->name('users.index');
-Route::get('UserCreate', [UserCrudController::class, 'create'])->name('users.UserCreate');
-Route::post('users', [UserCrudController::class, 'postUser'])->name('users.store');
-Route::get('/users/{id}/edit', [UserCrudController::class, 'editUser'])->name('users.editUser');
-Route::delete('/users/{id}/delete', [UserCrudController::class, 'deleteUser'])->name('users.deleteUser');
-Route::put('/users/{id}', [UserCrudController::class, 'updateUser'])->name('users.updateUser');
 
 
 //login
