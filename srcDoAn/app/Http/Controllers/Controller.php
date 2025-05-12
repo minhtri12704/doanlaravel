@@ -11,12 +11,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 }
-class BaiVietControllers extends Controller {
-    
-        public function tintuc() {
-            $baiviet = BaiViet::all(); // hoặc paginate, hoặc lấy theo danh mục,...
-            return view('Blogtintuc', compact('baiviet'));
-        }   
-        
-}
 
