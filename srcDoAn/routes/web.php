@@ -54,6 +54,7 @@ Route::get('/categories/create', [CategoryCrudController::class, 'create'])->nam
 Route::post('/categories', [CategoryCrudController::class, 'store'])->name('categories.store');
 Route::put('/categories/{id}', [CategoryCrudController::class, 'update'])->name('categories.update');
 
+
 //Danh sách sản phẩm
 Route::get('/sanpham', [ProductListController::class, 'index'])->name('sanpham.index');
 //route lấy danh mục tại HomePage
@@ -93,6 +94,11 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+//route tin tuc
+Route::get('/blog', [BaiVietController::class, 'index'])->name('baiviet.index');
+Route::get('/blog/{id}', [BaiVietController::class, 'show'])->name('baiviet.show');
 
 
 

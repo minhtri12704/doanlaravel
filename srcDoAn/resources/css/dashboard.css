@@ -1,0 +1,21 @@
+body {
+  background-color: #1c1c1e;
+  color: #f5e6f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.navbar {
+  background-color: #2c2c2e;
+}
+.navbar-brand {
+  color: #ffb6c1 !important;
+  font-weight: bold;
+}
+.navbar-nav .nav-link {
+  color: #f8e8f9 !important;
+}
+.navbar-nav .nav-link:hover {
+  color: #ffd6ec !important;
+}
+.content {
+  padding: 30px;
+}
