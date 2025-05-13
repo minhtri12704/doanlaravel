@@ -2,19 +2,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChiTietSanPham;
+use App\Models\CrudProduct;
 use Illuminate\Http\Request;
 
 class ChiTietSanPhamController extends Controller
 {
     public function show($id)
     {
-        $chiTietSanPham = ChiTietSanPham::findOrFail($id);
+        $chiTietSanPham = CrudProduct::findOrFail($id);
     
         // Lấy từ khóa (ví dụ: lấy "máy lạnh" từ tên sản phẩm)
-        $tuKhoa = $this->layTuKhoaLienQuan($chiTietSanPham->ten_san_pham);
+        $tuKhoa = $this->layTuKhoaLienQuan($chiTietSanPham->name);
     
         // Tìm sản phẩm liên quan theo từ khóa trong tên sản phẩm (loại trừ chính nó)
-        $sanPhamLienQuan = ChiTietSanPham::where('ten_san_pham', 'like', "%$tuKhoa%")
+        $sanPhamLienQuan = CrudProduct::where('name', 'like', "%$tuKhoa%")
             ->where('id', '!=', $chiTietSanPham->id)
             ->take(4)
             ->get();

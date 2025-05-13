@@ -75,13 +75,13 @@
         @forelse($sanPhams as $sp)
         <div class="col">
             <div class="card h-100 shadow-sm">
-                <img src="{{ asset('images/' . $sp->hinh_anh) }}"
-                     alt="{{ $sp->ten_san_pham }}"
+                <img src="{{ asset( 'images/' . $sp->image) }}"
+                     alt="{{ $sp->name }}"
                      class="card-img-top img-fluid"
                      style="height: 250px; width:100%; object-fit: cover;">
 
                 <div class="card-body">
-                    <h5 class="card-title text-danger" style="min-height: 48px;">{{ $sp->ten_san_pham }}</h5>
+                    <h5 class="card-title text-danger" style="min-height: 48px;">{{ $sp->name }}</h5>
                     <div class="mb-2">
                         @for($i = 1; $i <= 5; $i++)
                             @if($i <= $sp->so_sao)
@@ -94,13 +94,13 @@
 
                     <p class="card-text">
                         <strong class="text-dark">Giá:</strong>
-                        <span class="text-danger">{{ number_format($sp->gia, 0, ',', '.') }}₫</span><br>
+                        <span class="text-danger">{{ number_format($sp->price, 0, ',', '.') }}₫</span><br>
                         <strong class="text-dark">Ngày tạo:</strong> {{ $sp->created_at->format('d/m/Y') }}
                     </p>
 
                     <div class="d-grid gap-2">
                         <a href="#" class="btn btn-dark btn-sm">Mua ngay</a>
-                        <a href="{{ route('chitietsanpham.detail', $sp->id) }}" class="btn btn-outline-dark btn-sm">Xem chi tiết</a>
+                        <a href="{{ route('chitietsanpham.show', $sp->id) }}" class="btn btn-outline-dark btn-sm">Xem chi tiết</a>
                     </div>
                 </div>
             </div>

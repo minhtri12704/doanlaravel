@@ -42,16 +42,16 @@
     <div class="row">
         <!-- Hình ảnh -->
         <div class="col-md-6 text-center">
-            <img src="{{ asset('images/' . $chiTietSanPham->hinh_anh) }}" 
+            <img src="{{ asset('images/' . $chiTietSanPham->image) }}" 
                  class="img-fluid rounded" 
-                 alt="{{ $chiTietSanPham->ten_san_pham }}" 
+                 alt="{{ $chiTietSanPham->name }}" 
                  style="max-height: 400px;">
         </div>
 
         <!-- Thông tin -->
         <div class="col-md-6">
-            <h2>{{ $chiTietSanPham->ten_san_pham }}</h2>
-            <h4 class="text-danger">{{ number_format($chiTietSanPham->gia, 0, ',', '.') }} đ</h4>
+            <h2>{{ $chiTietSanPham->name }}</h2>
+            <h4 class="text-danger">{{ number_format($chiTietSanPham->price, 0, ',', '.') }} đ</h4>
 
             <p><strong>Số sao đánh giá:</strong>
                 @for($i = 1; $i <= 5; $i++)
@@ -81,11 +81,11 @@
         @forelse($sanPhamLienQuan as $sp)
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <img src="{{ asset('images/' . $sp->hinh_anh) }}" class="card-img-top" alt="{{ $sp->ten_san_pham }}" style="height: 180px; object-fit: cover;">
+                    <img src="{{ asset('images/' . $sp->image) }}" class="card-img-top" alt="{{ $sp->name }}" style="height: 180px; object-fit: cover;">
                     <div class="card-body">
-                        <h6 class="card-title">{{ $sp->ten_san_pham }}</h6>
-                        <p class="card-text text-danger">{{ number_format($sp->gia, 0, ',', '.') }}₫</p>
-                        <a href="{{ route('chitietsanpham.detail', $sp->id) }}" class="btn btn-sm btn-outline-primary">Xem</a>
+                        <h6 class="card-title">{{ $sp->name }}</h6>
+                        <p class="card-text text-danger">{{ number_format($sp->price, 0, ',', '.') }}₫</p>
+                        <a href="{{ route('chitietsanpham.show', $sp->id) }}" class="btn btn-sm btn-outline-primary">Xem</a>
                     </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@ class ProductListController extends Controller
 {
     public function index()
     {
-        $sanPhams = ChiTietSanPham::with('category')->paginate(10); // Hoặc 8/16 tuỳ bạn
+        $sanPhams = CrudProduct::with('category')->paginate(10); // Hoặc 8/16 tuỳ bạn
         return view('page.ProductList', compact('sanPhams'));
     }
     //hiển thị danh mục chính trên thanh navbar

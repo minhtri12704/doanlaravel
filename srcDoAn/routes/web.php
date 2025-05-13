@@ -61,7 +61,7 @@ Route::get('/sanpham', [ProductListController::class, 'index'])->name('sanpham.i
 //route lấy danh mục tại HomePage
 Route::get('/sanpham/{id}', [ProductListController::class, 'showByCategory'])->name('products.byCategory');
 // Trang chi tiết sản phẩm
-Route::get('/chitietsanpham/{id}', [ChiTietSanPhamController::class, 'show'])->name('chitietsanpham.detail');
+Route::get('/chitietsanpham/{id}', [ChiTietSanPhamController::class, 'show'])->name('chitietsanpham.show');
 
 //route tintuc
 //Route::get('/blog', [BaiVietController::class, 'index'])->name('baiviet.index');
