@@ -83,6 +83,10 @@
                     <button class="btn btn-light" type="submit"><i class="bi bi-search"></i></button>
                 </form>
                 <a href="#" class="btn btn-outline-light ms-3">Đăng nhập</a>
+                <a href="#" class="btn btn-outline-light ms-2">
+                    <i class="bi bi-cart"></i>
+                </a>
+
             </div>
         </div>
     </nav>
@@ -123,4 +127,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
