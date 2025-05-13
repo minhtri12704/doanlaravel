@@ -10,7 +10,7 @@ class OrderController extends Controller
     // Hiển thị danh sách đơn hàng
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::orderBy('created_at', 'desc')->paginate(10);
         return view('crud_order.crud_Order', compact('orders'));
     }
 
