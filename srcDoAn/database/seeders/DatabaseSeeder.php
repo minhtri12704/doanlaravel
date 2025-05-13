@@ -12,17 +12,18 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
-        // User::factory(10)->create();
-
+{
+    if (!User::where('email', 'test@example.com')->exists()) {
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-        //gọi seeder Category và Product
-        $this->call([
-            CategorySeeder::class,
-            CrudProductSeeder::class,
-        ]);
     }
+
+    $this->call([
+        CategorySeeder::class,
+        CrudProductSeeder::class,
+        KhuyenMaiSeeder::class,
+    ]);
+}
 }

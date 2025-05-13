@@ -68,7 +68,7 @@
     }
 </style>
 <div class="container mt-5">
-    <h2 class="text-center mb-4" style="color: blac; text-shadow: 1px 1px 3px #000;">Danh sách Sản phẩm</h2>
+    <h2 class="text-center mb-4" style="color: black; text-shadow: 1px 1px 3px #000;">Danh sách Sản phẩm</h2>
     <div class="row row-cols-1 row-cols-md-4 g-4">
         @forelse($sanPhams as $sp)
         <div class="col">

@@ -11,7 +11,7 @@ use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\UserCrudController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\KhuyenMaiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,6 +64,23 @@ Route::get('/sanpham/{id}', [ProductListController::class, 'showByCategory'])->n
 //Route::get('/blog', [BaiVietController::class, 'index'])->name('baiviet.index');
 //Route::get('/blog/{id}', [BaiVietController::class, 'show'])->name('baiviet.show');
 
+//Trang Khuyến Mãi
+Route::get('/khuyenmai', [KhuyenMaiController::class, 'index'])->name('khuyenmai.index');
+
+//Trang thêm mới
+Route::get('/khuyenmai/create', [KhuyenMaiController::class, 'create'])->name('khuyenmai.create');
+
+//Xử lý thêm mới
+Route::post('/khuyenmai', [KhuyenMaiController::class, 'store'])->name('khuyenmai.store');
+
+//Trang sửa
+Route::get('/khuyenmai/{id}/edit', [KhuyenMaiController::class, 'edit'])->name('khuyenmai.edit');
+
+//Xử lý cập nhật
+Route::put('/khuyenmai/{id}', [KhuyenMaiController::class, 'update'])->name('khuyenmai.update');
+
+//Xử lý xóa
+Route::delete('/khuyenmai/{id}', [KhuyenMaiController::class, 'destroy'])->name('khuyenmai.destroy');
 
 // route CrudProduct với prefix
 /*
