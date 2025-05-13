@@ -5,12 +5,12 @@
 
 <style>
     body {
-        background-color:rgb(255, 255, 255);
-        color:rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
     }
 
     h2 {
-        color:rgb(0, 0, 0);
+        color: rgb(0, 0, 0);
     }
 
     .table {
@@ -51,8 +51,8 @@
     }
 
     .pagination .page-link {
-        background-color:rgb(255, 255, 255);
-        color:rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
         border: 1px solid #d3d3d3;
     }
 
@@ -67,19 +67,21 @@
         color: #ffffff;
     }
 </style>
+
 <div class="container mt-5">
-    <h2 class="text-center mb-4" style="color: blac; text-shadow: 1px 1px 3px #000;">Danh sách Sản phẩm</h2>
+    <h2 class="text-center mb-4" style="color: black; text-shadow: 1px 1px 3px #000;">Danh sách Sản phẩm</h2>
+    
     <div class="row row-cols-1 row-cols-md-4 g-4">
         @forelse($sanPhams as $sp)
         <div class="col">
             <div class="card h-100 shadow-sm">
-                <img src="{{ asset('images/' . $sp->image) }}"
-                     alt="{{ $sp->name }}"
+                <img src="{{ asset('images/' . $sp->hinh_anh) }}"
+                     alt="{{ $sp->ten_san_pham }}"
                      class="card-img-top img-fluid"
-                     style="height: 250px;width:350px; object-fit: cover;">
+                     style="height: 250px; width:100%; object-fit: cover;">
 
                 <div class="card-body">
-                    <h5 class="card-title text-danger" style="min-height: 48px;">{{ $sp->name }}</h5>
+                    <h5 class="card-title text-danger" style="min-height: 48px;">{{ $sp->ten_san_pham }}</h5>
                     <div class="mb-2">
                         @for($i = 1; $i <= 5; $i++)
                             @if($i <= $sp->so_sao)
@@ -92,19 +94,19 @@
 
                     <p class="card-text">
                         <strong class="text-dark">Giá:</strong>
-                        <span class="text-danger">{{ number_format($sp->price, 0, ',', '.') }}₫</span><br>
+                        <span class="text-danger">{{ number_format($sp->gia, 0, ',', '.') }}₫</span><br>
                         <strong class="text-dark">Ngày tạo:</strong> {{ $sp->created_at->format('d/m/Y') }}
                     </p>
 
-                    {{-- Nút mua ngay --}}
-                    <div class="d-grid">
+                    <div class="d-grid gap-2">
                         <a href="#" class="btn btn-dark btn-sm">Mua ngay</a>
+                        <a href="{{ route('chitietsanpham.detail', $sp->id) }}" class="btn btn-outline-dark btn-sm">Xem chi tiết</a>
                     </div>
                 </div>
             </div>
         </div>
         @empty
-        <div class="col-12 text-center text-light">Không có sản phẩm nào.</div>
+        <div class="col-12 text-center text-muted">Không có sản phẩm nào.</div>
         @endforelse
     </div>
 
@@ -113,5 +115,4 @@
         {{ $sanPhams->links() }}
     </div>
 </div>
-
 @endsection

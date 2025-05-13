@@ -11,7 +11,7 @@ use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\UserCrudController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\ChiTietSanPhamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,10 +55,11 @@ Route::post('/categories', [CategoryCrudController::class, 'store'])->name('cate
 Route::put('/categories/{id}', [CategoryCrudController::class, 'update'])->name('categories.update');
 
 
-//Danh sách sản phẩm
+// Hiển thị danh sách sản phẩm chính
 Route::get('/sanpham', [ProductListController::class, 'index'])->name('sanpham.index');
-//route lấy danh mục tại HomePage
-Route::get('/sanpham/{id}', [ProductListController::class, 'showByCategory'])->name('products.byCategory');
+
+// Trang chi tiết sản phẩm
+Route::get('/chitietsanpham/{id}', [ChiTietSanPhamController::class, 'show'])->name('chitietsanpham.detail');
 
 //route tintuc
 //Route::get('/blog', [BaiVietController::class, 'index'])->name('baiviet.index');
