@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\UserCrudController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +59,7 @@ Route::put('/categories/{id}', [CategoryCrudController::class, 'update'])->name(
 //Danh sách sản phẩm
 Route::get('/sanpham', [ProductListController::class, 'index'])->name('sanpham.index');
 //route lấy danh mục tại HomePage
-Route::get('/sanpham/{id}', [ProductListController::class, 'showByCategory'])->name('sanphams.byCategory');
+Route::get('/sanpham/{id}', [ProductListController::class, 'showByCategory'])->name('products.byCategory');
 
 //route tintuc
 //Route::get('/blog', [BaiVietController::class, 'index'])->name('baiviet.index');
@@ -100,6 +101,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/blog', [BaiVietController::class, 'index'])->name('baiviet.index');
 Route::get('/blog/{id}', [BaiVietController::class, 'show'])->name('baiviet.show');
 
+//chat
+Route::post('/chat/send', [ChatController::class, 'send'])->name('chat.send');
 
 
 Route::get('/', function () {
