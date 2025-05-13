@@ -24,7 +24,8 @@ class CrudProductSeeder extends Seeder
                     'descript' => "Mô tả sản phẩm {$category->name} $i",
                     'quantity' => rand(5, 20),
                     'price' => rand(300, 1000) * 1000,
-                    'image' => strtolower(str_replace(' ', '-', $category->name)) . '.jpg',
+                    'image' => ['mayquat.png', 'tivi.png'][array_rand([0, 1])],
+
                 ]);
             }
         }
