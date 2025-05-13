@@ -57,7 +57,7 @@ Route::put('/categories/{id}', [CategoryCrudController::class, 'update'])->name(
 
 // Hiển thị danh sách sản phẩm chính
 Route::get('/sanpham', [ProductListController::class, 'index'])->name('sanpham.index');
-
+Route::get('/sanpham/{id}', [ProductListController::class, 'showByCategory'])->name('products.byCategory');
 // Trang chi tiết sản phẩm
 Route::get('/chitietsanpham/{id}', [ChiTietSanPhamController::class, 'show'])->name('chitietsanpham.detail');
 
@@ -77,14 +77,6 @@ Route::post('/products', [CrudProductController::class, 'store'])->name('product
 Route::get('/products/{product}/edit', [CrudProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [CrudProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{product}', [CrudProductController::class, 'delete'])->name('products.delete');
-
-
-
-
-
-
-
-
 
 
 
