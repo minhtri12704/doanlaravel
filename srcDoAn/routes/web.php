@@ -12,6 +12,7 @@ use App\Http\Controllers\UserCrudController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
+use App\Http\Controllers\HomePageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,6 +101,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/blog', [BaiVietController::class, 'index'])->name('baiviet.index');
 Route::get('/blog/{id}', [BaiVietController::class, 'show'])->name('baiviet.show');
 
+//home page
+Route::get('/home', [HomePageController::class, 'index'])->name('home');
 
 
 Route::get('/', function () {
