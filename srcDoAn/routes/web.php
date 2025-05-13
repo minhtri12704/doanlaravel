@@ -58,7 +58,7 @@ Route::put('/categories/{id}', [CategoryCrudController::class, 'update'])->name(
 //Danh sách sản phẩm
 Route::get('/sanpham', [ProductListController::class, 'index'])->name('sanpham.index');
 //route lấy danh mục tại HomePage
-Route::get('/sanpham/{id}', [ProductListController::class, 'showByCategory'])->name('sanphams.byCategory');
+Route::get('/sanpham/{id}', [ProductListController::class, 'showByCategory'])->name('products.byCategory');
 
 //route tintuc
 //Route::get('/blog', [BaiVietController::class, 'index'])->name('baiviet.index');
