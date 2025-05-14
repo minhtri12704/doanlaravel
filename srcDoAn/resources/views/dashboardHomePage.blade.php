@@ -82,7 +82,7 @@
                     <input class="form-control me-2" type="search" name="query" placeholder="Tìm kiếm..." aria-label="Search">
                     <button class="btn btn-light" type="submit"><i class="bi bi-search"></i></button>
                 </form>
-                <a href="#" class="btn btn-outline-light ms-3">Đăng nhập</a>
+                <a href="{{ route('login') }}" class="btn btn-outline-light ms-3">Đăng nhập</a>
             </div>
         </div>
     </nav>

@@ -124,48 +124,47 @@ body {
 /* Banner slider */
 .banner-container {
     overflow: hidden;
-    border-radius: 12px;
-    width: 100%;
-    margin: 20px auto;
-    height: 250px;
+    width: 100vw;
+    height: 400px;
+    margin: 0 auto;
     position: relative;
+    border-radius: 0;
 }
 
 .banner-slider {
     display: flex;
-    width: calc(300% + 20px);
-    animation: slideLeft 30s infinite ease-in-out;
+    width: 300%;
+    animation: slideLeft 45s ease-in-out infinite;
 }
 
 .banner-slider img {
-    width: 100%;
-    height: 250px;
+    width: 100vw;
+    height: 100%;
     object-fit: cover;
+    padding: 0;
+    margin: 0;
     flex-shrink: 0;
-    transition: transform 0.5s;
+}
+
+.banner-container:hover .banner-slider {
+    animation-play-state: paused;
 }
 
 @keyframes slideLeft {
-
-    0%,
-    10% {
-        transform: translateX(0);
+    0%, 10% {
+        transform: translateX(0%);
     }
-
-    33%,
-    43% {
+    20%, 30% {
         transform: translateX(-100%);
     }
-
-    66%,
-    76% {
+    40%, 50% {
         transform: translateX(-200%);
     }
-
-    100% {
-        transform: translateX(0);
+    60%, 100% {
+        transform: translateX(0%);
     }
 }
+
 
 /* Service Boxes */
 .service-section {
@@ -221,19 +220,19 @@ body {
 <div class="banner-container">
     <div class="banner-slider">
         @forelse ($products->take(3) as $product)
-        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+        <img src="{{ asset('images/' . ($product->image ?? 'default.jpg')) }}" alt="{{ $product->ten_san_pham }}">
         @empty
-        <img src="{{ asset('image/banner3.jpg') }}" alt="Banner 3">
+        <img src="{{ asset('images/maylanh3.jpg') }}" alt="Banner 3">
         @endforelse
     </div>
-</div>
+</div>  
 <!-- spnb -->
 <section style="margin: 40px 0;">
     <h2 class="section-title">Sản phẩm nổi bật</h2>
     <div class="product-grid">
         @foreach ($bestSellers as $product)
         <div class="product-card">
-            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+            <img src="{{ asset('images/' . ($product->image ?? 'default.jpg')) }}" alt="{{ $product->ten_san_pham }}">
             <div class="product-name">{{ $product->ten_san_pham }}</div>
             <div class="product-price">{{ number_format($product->price, 0, ',', '.') }} VNĐ</div>
         </div>
@@ -252,7 +251,7 @@ body {
     @forelse ($products as $product)
     <div class="product-card">
         <div class="favorite-icon" onclick="alert('Yêu thích rồi nhé 😍')">♥</div>
-        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+        <img src="{{ asset('images/' . ($product->image ?? 'default.jpg')) }}" alt="{{ $product->ten_san_pham }}">
         <div class="product-name">{{ $product->ten_san_pham }}</div>
         <div class="product-price">{{ number_format($product->price, 0, ',', '.') }} VNĐ</div>
         <button class="btn-cart">Thêm vào giỏ</button>
@@ -262,8 +261,8 @@ body {
     @endforelse
 </div>
 <div style="margin-top: 30px; text-align: center;">
-        {{ $products->withQueryString()->links() }}
-    </div>
+    {{ $products->withQueryString()->links() }}
+</div>
 <!-- Dịch vụ nổi bật -->
 <section class="service-section">
     <h2 class="section-title">Tại sao chọn chúng tôi?</h2>
