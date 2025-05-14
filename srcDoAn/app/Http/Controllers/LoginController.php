@@ -18,7 +18,7 @@ class LoginController extends Controller
 
     if (Auth::attempt($credentials)) {
         return redirect('/'); 
-    }
+    }   
 
     return back()->with('error', 'Email hoặc mật khẩu không đúng')->withInput();
     }
