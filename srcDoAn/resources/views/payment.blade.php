@@ -1,11 +1,11 @@
-@extends('dashboard') <!-- Nếu bạn dùng layout chính -->
+@extends('dashboard')
 
 @section('title', 'Thanh Toán')
 
 @section('content')
 <style>
   body {
-    background-color: #f8bbd0; 
+    background-color:rgb(64, 144, 224); 
     font-family: 'Quicksand', sans-serif;
   }
 
@@ -21,7 +21,7 @@
 
   h2 {
     text-align: center;
-    color: #880e4f;
+    color:rgb(0, 0, 0);
     margin-bottom: 30px;
   }
 
@@ -29,12 +29,13 @@
     display: block;
     margin-bottom: 8px;
     font-weight: 800;
-    color:rgba(170, 52, 115, 0.74);
+    color: rgba(0, 0, 0, 0.74);
   }
 
   input[type="text"],
   input[type="email"],
-  input[type="number"] {
+  input[type="number"],
+  select {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -46,7 +47,7 @@
   button {
     width: 100%;
     padding: 14px;
-    background-color: #880e4f;
+    background-color:rgb(53, 41, 216);
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -56,7 +57,7 @@
   }
 
   button:hover {
-    background-color: #ad1457;
+    background-color:rgb(2, 52, 134);
   }
 
   .note {
@@ -65,7 +66,7 @@
     color: #616161;
     margin-top: 20px;
   }
-  .container-pay{
+  .container-pay {
     margin-top: 5%;
   }
 </style>
@@ -85,18 +86,11 @@
     <label for="address">Địa chỉ giao hàng</label>
     <input type="text" id="address" name="address" value="{{ old('address') }}" required>
 
-    <label>Phương thức thanh toán</label>
-<div style="margin-bottom: 20px;">
-  <label style="display: block; margin-bottom: 5px;">
-    <input type="radio" name="payment_method" value="cash" {{ old('payment_method') == 'cash' ? 'checked' : '' }} required>
-    Tiền mặt (Thanh toán khi nhận hàng)
-  </label>
-  <label style="display: block;">
-    <input type="radio" name="payment_method" value="bank" {{ old('payment_method') == 'bank' ? 'checked' : '' }}>
-    Chuyển khoản ngân hàng (Đã tích hợp)
-  </label>
-</div>
-
+    <label for="payment_method">Phương thức thanh toán</label>
+    <select id="payment_method" name="payment_method" required>
+      <option value="cash" {{ old('payment_method') == 'cash' ? 'selected' : '' }}>Tiền mặt (Thanh toán khi nhận hàng)</option>
+      <option value="bank" {{ old('payment_method') == 'bank' ? 'selected' : '' }}>Chuyển khoản ngân hàng</option>
+    </select>
 
     <label for="amount">Số tiền (VNĐ)</label>
     <input type="number" id="amount" name="amount" value="{{ old('amount') }}" required>
