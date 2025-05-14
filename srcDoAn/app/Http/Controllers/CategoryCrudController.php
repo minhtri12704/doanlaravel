@@ -6,7 +6,6 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryCrudController extends Controller
-
 {
     public function index()
     {
@@ -34,17 +33,8 @@ class CategoryCrudController extends Controller
 
     public function editCategory($id)
     {
-        $categories = Category::findOrFail($id);
-        return view('crud_user.CategoryEdit', compact('categories'));
-    }
-
-    // Xoá danh mục
-    public function deleteCategory($id)
-    {
-        $category = Category::findOrFail($id);
-        $category->delete();
-
-        return redirect()->route('categories.index')->with('success', 'Đã xoá danh mục thành công!');
+        $category = Category::findOrFail($id); // ✅ Sửa tên biến
+        return view('crud_user.CategoryEdit', compact('category')); // ✅ Dùng compact('category')
     }
 
     public function update(Request $request, $id)
@@ -59,5 +49,13 @@ class CategoryCrudController extends Controller
         ]);
 
         return redirect()->route('categories.index')->with('success', 'Cập nhật danh mục thành công!');
+    }
+
+    public function deleteCategory($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Đã xoá danh mục thành công!');
     }
 }

@@ -82,7 +82,7 @@ class CrudUserController extends Controller
         return redirect()->route('users.index')->with('success', 'Đã cập nhật người dùng!');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         $user = User::findOrFail($id);
         $user->delete();

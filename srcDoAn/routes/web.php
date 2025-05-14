@@ -38,14 +38,15 @@ Route::post('/users', [CrudUserController::class, 'store'])->name('users.store')
 //Route::get('users/edit/{id}', [CrudUserController::class, 'edit'])->name('users.edit');
 
 // Xử lý cập nhật
-Route::get('/users/update/{id}', [CrudUserController::class, 'edit'])->name('user.edit');
+Route::get('/users/update/{id}', [CrudUserController::class, 'edit'])->name('users.edit');
 Route::put('/users/{id}', [CrudUserController::class, 'update'])->name('users.update');
 
 //Route::put('/users/{id}', [CrudUserController::class, 'update'])->name('users.update');
 
 // Xử lý xóa người dùng
-//Route::delete('/users/{id}', [CrudUserController::class, 'delete'])->name('users.delete');
-Route::get('/users/delete/{id}', [CrudUserController::class, 'delete'])->name('user.delete');
+Route::delete('/users/{id}', [CrudUserController::class, 'delete'])->name('users.delete');
+
+//Route::get('/users/delete/{id}', [CrudUserController::class, 'delete'])->name('user.delete');
 
 //route category
 Route::get('/categories', [CategoryCrudController::class, 'index'])->name('categories.index');
